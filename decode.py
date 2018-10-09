@@ -5,6 +5,7 @@ r = requests.get('https://www.nytimes.com/')
 r_html = r.text
 
 soup = BeautifulSoup(r_html, 'html.parser')
-title = soup.find_all('span',attrs={'class':'ghost'})
+title = soup.find_all('h2')
 
-print (title)
+for each in title:
+    print (each.text)
