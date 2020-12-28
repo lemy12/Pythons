@@ -1,10 +1,15 @@
+import json
+
+
 def create_birthday_dictionary():
-    dict = {}
-    with open("birthday.txt") as fhandle:
-        for line in fhandle:
-            tempLine = line.rstrip().split()
-            dict[tempLine[0]+tempLine[1]] = dict.get(tempLine[0]+tempLine[1], tempLine[2])
-    return dict
+    with open("birthday.json", "r") as fRead:
+        info = json.load(fRead)
+    name = input("New name: ")
+    date = input("New date: ")
+    info[name] = date
+    with open("birthday.json", "w") as fWrite:
+        json.dump(info, fWrite)
+    return info
 
 
 if __name__ == "__main__":
